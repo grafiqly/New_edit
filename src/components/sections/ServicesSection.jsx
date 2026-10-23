@@ -22,9 +22,9 @@ const services = [
     name: 'BRANDING & IDENTITY',
     headline: 'brands that command attention.',
     icon: Palette,
-    color: '#00E5FF',
-    gradientFrom: '#00E5FF',
-    gradientTo: '#0077B6',
+    color: '#D4FF00',
+    gradientFrom: '#D4FF00',
+    gradientTo: '#84CC16',
     description:
       'We forge brands that command attention. From visual identity systems to brand strategy, we create cohesive experiences that tell your story and build lasting equity.',
     metrics: [
@@ -37,9 +37,9 @@ const services = [
     name: 'SOCIAL MEDIA',
     headline: 'communities that convert.',
     icon: Share2,
-    color: '#8A2BE2',
-    gradientFrom: '#8A2BE2',
-    gradientTo: '#C77DFF',
+    color: '#6366F1',
+    gradientFrom: '#6366F1',
+    gradientTo: '#4F46E5',
     description:
       'Strategic social media management that builds communities and drives engagement. We craft content calendars, manage campaigns, and turn followers into brand advocates.',
     metrics: [
@@ -52,9 +52,9 @@ const services = [
     name: 'CONTENT PRODUCTION',
     headline: 'scroll-stopping content.',
     icon: Film,
-    color: '#00E5FF',
-    gradientFrom: '#00E5FF',
-    gradientTo: '#00B4D8',
+    color: '#D4FF00',
+    gradientFrom: '#D4FF00',
+    gradientTo: '#10B981',
     description:
       'From concept to final cut, we produce scroll-stopping content that resonates. Photography, motion graphics, copywriting — all under one roof.',
     metrics: [
@@ -67,9 +67,9 @@ const services = [
     name: 'SEO & ANALYTICS',
     headline: 'dominate search. own discovery.',
     icon: Search,
-    color: '#8A2BE2',
-    gradientFrom: '#8A2BE2',
-    gradientTo: '#6A0DAD',
+    color: '#6366F1',
+    gradientFrom: '#6366F1',
+    gradientTo: '#8B5CF6',
     description:
       'Data-driven SEO strategies that put you on the map. We optimize for visibility, analyze performance patterns, and drive sustainable organic growth.',
     metrics: [
@@ -82,7 +82,7 @@ const services = [
     name: 'PAID ADVERTISING',
     headline: 'precision-targeted campaigns.',
     icon: Target,
-    color: '#00E5FF',
+    color: '#D4FF00',
     gradientFrom: '#FF6B35',
     gradientTo: '#FF3D00',
     description:
@@ -97,7 +97,7 @@ const services = [
     name: 'WEBSITE DESIGN',
     headline: 'websites that convert.',
     icon: Globe,
-    color: '#8A2BE2',
+    color: '#6366F1',
     gradientFrom: '#10B981',
     gradientTo: '#059669',
     description:
@@ -112,7 +112,7 @@ const services = [
     name: 'VIDEO PRODUCTION',
     headline: 'cinematic stories that sell.',
     icon: Video,
-    color: '#00E5FF',
+    color: '#D4FF00',
     gradientFrom: '#E91E8C',
     gradientTo: '#FF6B9D',
     description:

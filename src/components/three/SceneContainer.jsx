@@ -55,19 +55,19 @@ function SceneContainerInner({
               <pointLight
                 position={[5, 5, 5]}
                 intensity={20}
-                color="#00E5FF"
+                color="#D4FF00"
                 decay={2}
               />
               <pointLight
                 position={[-4, -3, 3]}
                 intensity={10}
-                color="#8A2BE2"
+                color="#6366F1"
                 decay={2}
               />
               <pointLight
                 position={[0, 4, -5]}
                 intensity={8}
-                color="#00E5FF"
+                color="#D4FF00"
                 decay={2}
               />
             </>

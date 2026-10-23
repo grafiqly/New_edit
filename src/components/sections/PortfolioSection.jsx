@@ -18,8 +18,8 @@ const projects = [
     name: 'NovaTech Rebrand',
     category: 'Branding',
     icon: Layers,
-    gradient: 'from-cyan-500/20 to-blue-600/20',
-    accentColor: '#00E5FF',
+    gradient: 'from-lime-500/20 to-emerald-600/20',
+    accentColor: '#D4FF00',
     tagline: 'A complete brand transformation for the AI era',
     challenge:
       'NovaTech, a legacy enterprise SaaS company, was losing market share to nimble AI-native competitors. Their dated brand identity failed to communicate their technological edge and innovation pipeline.',
@@ -35,8 +35,8 @@ const projects = [
     name: 'Pulse Fitness App',
     category: 'Digital',
     icon: Smartphone,
-    gradient: 'from-purple-500/20 to-pink-500/20',
-    accentColor: '#8A2BE2',
+    gradient: 'from-indigo-500/20 to-purple-600/20',
+    accentColor: '#6366F1',
     tagline: 'Reimagining the connected fitness experience',
     challenge:
       'Pulse needed a mobile experience that could compete with Peloton and Apple Fitness+ while carving out a unique niche in the AI-personalized workout space.',
@@ -124,17 +124,16 @@ function ProjectCard({ project, index, onSelect }) {
 
   return (
     <motion.div
-      className="glass-card rounded-2xl overflow-hidden group cursor-pointer relative"
+      className="glass-card rounded-2xl overflow-hidden group cursor-pointer relative transition-transform duration-300 ease-out hover:-translate-y-1.5 hover:scale-[1.02] active:scale-[0.98]"
       initial={{ opacity: 0, y: 40 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ delay: index * 0.1, duration: 0.6, ease: [0.25, 0.46, 0.45, 0.94] }}
-      whileHover={{ y: -6, scale: 1.02 }}
-      whileTap={{ scale: 0.98 }}
       onClick={() => onSelect(project)}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => e.key === 'Enter' && onSelect(project)}
+      style={{ willChange: 'transform' }}
     >
       {/* Gradient header */}
       <div
@@ -174,10 +173,10 @@ function ProjectCard({ project, index, onSelect }) {
 
       {/* Card body */}
       <div className="p-5">
-        <h3 className="font-display text-lg font-bold text-white group-hover:text-accent transition-colors duration-300">
+        <h3 className="font-display text-lg font-bold text-white group-hover:text-accent transition-colors duration-300 [text-wrap:balance]">
           {project.name}
         </h3>
-        <p className="text-subtext text-sm mt-1.5 leading-relaxed">
+        <p className="text-slate-400 text-sm mt-1.5 leading-relaxed [text-wrap:pretty]">
           {project.tagline}
         </p>
       </div>
@@ -257,7 +256,7 @@ function ProjectModal({ project, onClose }) {
 
         {/* Body */}
         <div className="p-6 sm:p-8 space-y-6">
-          <p className="text-lg text-subtext leading-relaxed italic border-l-2 border-accent/30 pl-4">
+          <p className="text-base sm:text-lg text-slate-300 leading-relaxed italic border-l-2 border-accent/40 pl-4 [text-wrap:pretty]">
             {project.tagline}
           </p>
 
@@ -268,14 +267,14 @@ function ProjectModal({ project, onClose }) {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 + i * 0.1, duration: 0.5 }}
             >
-              <h3 className="font-display text-lg font-semibold text-white mb-2 flex items-center gap-2">
+              <h3 className="font-display text-base sm:text-lg font-semibold text-white mb-2 flex items-center gap-2">
                 <span
                   className="w-1.5 h-1.5 rounded-full"
                   style={{ background: project.accentColor }}
                 />
                 {section.title}
               </h3>
-              <p className="text-subtext leading-relaxed">{section.content}</p>
+              <p className="text-slate-400 text-sm sm:text-base leading-relaxed [text-wrap:pretty]">{section.content}</p>
             </motion.div>
           ))}
         </div>
@@ -298,9 +297,15 @@ export function PortfolioSection() {
       id="portfolio"
       className="section-padding relative overflow-hidden"
     >
-      {/* Background accents */}
-      <div className="absolute top-1/4 -right-40 w-[600px] h-[600px] bg-highlight/3 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-1/3 -left-40 w-[500px] h-[500px] bg-accent/3 rounded-full blur-[150px] pointer-events-none" />
+      {/* Background accents — radial gradients instead of blur() for zero compositor cost */}
+      <div
+        className="absolute top-1/4 -right-40 w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.03]"
+        style={{ background: 'radial-gradient(circle, #6366F1, transparent 55%)' }}
+      />
+      <div
+        className="absolute bottom-1/3 -left-40 w-[500px] h-[500px] rounded-full pointer-events-none opacity-[0.03]"
+        style={{ background: 'radial-gradient(circle, #D4FF00, transparent 55%)' }}
+      />
 
       <div className="section-container">
         {/* Heading */}
@@ -323,7 +328,7 @@ export function PortfolioSection() {
 
         {/* Category filter */}
         <motion.div
-          className="flex flex-wrap justify-center gap-2 sm:gap-3 mt-10 mb-12"
+          className="flex flex-wrap justify-center gap-2 sm:gap-2.5 mt-8 mb-12"
           initial={{ opacity: 0, y: 15 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -333,10 +338,10 @@ export function PortfolioSection() {
             <button
               key={cat}
               onClick={() => setActiveCategory(cat)}
-              className={`px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 cursor-pointer ${
+              className={`px-5 py-2 rounded-full text-xs sm:text-sm font-semibold tracking-wide transition-[transform,background-color,color,box-shadow,border-color] duration-200 cursor-pointer active:scale-[0.96] min-h-[38px] ${
                 activeCategory === cat
-                  ? 'bg-accent text-primary shadow-neon-sm'
-                  : 'glass text-subtext hover:text-white hover:bg-white/5'
+                  ? 'bg-accent text-primary font-bold shadow-[0_0_20px_rgba(0,229,255,0.3)] border border-accent'
+                  : 'bg-white/[0.04] border border-white/10 text-slate-400 hover:text-white hover:border-white/20 hover:bg-white/[0.08]'
               }`}
             >
               {cat}

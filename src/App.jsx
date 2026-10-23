@@ -16,6 +16,7 @@ const ClientResultsSection = lazy(() => import('./components/sections/ClientResu
 const TestimonialsSection = lazy(() => import('./components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })))
 const TeamSection = lazy(() => import('./components/sections/TeamSection').then(m => ({ default: m.TeamSection })))
 const WhyChooseUsSection = lazy(() => import('./components/sections/WhyChooseUsSection').then(m => ({ default: m.WhyChooseUsSection })))
+const PackagesSection = lazy(() => import('./components/sections/PackagesSection').then(m => ({ default: m.PackagesSection })))
 const ContactSection = lazy(() => import('./components/sections/ContactSection').then(m => ({ default: m.ContactSection })))
 const AIAssistant = lazy(() => import('./components/ui/AIAssistant').then(m => ({ default: m.AIAssistant })))
 
@@ -38,6 +39,7 @@ function App() {
           <TestimonialsSection />
           <TeamSection />
           <WhyChooseUsSection />
+          <PackagesSection />
           <ContactSection />
         </Suspense>
       </main>

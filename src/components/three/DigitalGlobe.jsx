@@ -86,7 +86,7 @@ function GlobeWireframe() {
         <Line
           key={i}
           points={points}
-          color="#00E5FF"
+          color="#D4FF00"
           lineWidth={0.5}
           transparent
           opacity={0.15}
@@ -108,8 +108,8 @@ function GlobeWireframe() {
         <Float key={i} speed={point.speed} floatIntensity={0.3}>
           <Sphere args={[point.size, 8, 8]} position={point.position}>
             <meshStandardMaterial
-              color={i % 3 === 0 ? '#8A2BE2' : '#00E5FF'}
-              emissive={i % 3 === 0 ? '#8A2BE2' : '#00E5FF'}
+              color={i % 3 === 0 ? '#6366F1' : '#D4FF00'}
+              emissive={i % 3 === 0 ? '#6366F1' : '#D4FF00'}
               emissiveIntensity={3}
             />
           </Sphere>
@@ -120,8 +120,8 @@ function GlobeWireframe() {
       <mesh rotation={[Math.PI / 2, 0, 0]}>
         <ringGeometry args={[1.9, 1.95, 64]} />
         <meshStandardMaterial
-          color="#00E5FF"
-          emissive="#00E5FF"
+          color="#D4FF00"
+          emissive="#D4FF00"
           emissiveIntensity={0.5}
           transparent
           opacity={0.3}

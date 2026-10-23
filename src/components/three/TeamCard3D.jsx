@@ -77,7 +77,7 @@ function TeamCard3DInner({
   name = 'Team Member',
   role = 'Creative Director',
   image,
-  color = '#00E5FF',
+  color = '#D4FF00',
   position = [0, 0, 0],
 }) {
   const groupRef = useRef()

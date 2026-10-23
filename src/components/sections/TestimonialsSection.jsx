@@ -1,8 +1,7 @@
-import { useState, useEffect, useCallback } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { useState, useEffect, useCallback, useRef } from 'react'
+import { motion, AnimatePresence, useInView } from 'framer-motion'
 import { Star, ChevronLeft, ChevronRight } from 'lucide-react'
 import { SectionHeading } from '../ui/SectionHeading'
-import { useRef } from 'react'
 
 const testimonials = [
   {
@@ -89,13 +88,17 @@ function TestimonialCard({ testimonial }) {
 export function TestimonialsSection() {
   const [active, setActive] = useState(0)
   const intervalRef = useRef(null)
+  const sectionRef = useRef(null)
+  const isInView = useInView(sectionRef, { margin: '-50px' })
 
   const startAutoplay = useCallback(() => {
     if (intervalRef.current) clearInterval(intervalRef.current)
+    if (!isInView || (typeof window !== 'undefined' && window.innerWidth >= 768)) return
+
     intervalRef.current = setInterval(() => {
       setActive((prev) => (prev + 1) % testimonials.length)
     }, 5000)
-  }, [])
+  }, [isInView])
 
   useEffect(() => {
     startAutoplay()
@@ -118,7 +121,7 @@ export function TestimonialsSection() {
   }
 
   return (
-    <section id="testimonials" className="section-padding">
+    <section ref={sectionRef} id="testimonials" className="section-padding">
       <div className="section-container">
         <SectionHeading
           eyebrow="TESTIMONIALS"

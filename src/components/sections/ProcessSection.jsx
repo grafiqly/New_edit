@@ -269,8 +269,8 @@ function DesktopTimeline() {
           className="absolute inset-0 rounded-full origin-top"
           style={{
             background:
-              'linear-gradient(to bottom, #00E5FF, #8A2BE2, #00E5FF)',
-            boxShadow: '0 0 12px rgba(0, 229, 255, 0.4)',
+              'linear-gradient(to bottom, #D4FF00, #6366F1, #D4FF00)',
+            boxShadow: '0 0 12px rgba(212, 255, 0, 0.4)',
             transform: useGSAPAnim ? undefined : 'scaleY(1)',
           }}
         />
@@ -286,10 +286,32 @@ function DesktopTimeline() {
 }
 
 export function ProcessSection() {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.05 }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <section id="process" className="section-padding relative overflow-hidden">
       {/* Video Background */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop

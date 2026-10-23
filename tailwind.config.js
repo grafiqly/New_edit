@@ -4,27 +4,27 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#050505',
-        secondary: '#0D0D0D',
-        accent: '#00E5FF',
-        highlight: '#8A2BE2',
-        subtext: '#A0A0A0',
+        primary: '#08090C',
+        secondary: '#0F1117',
+        accent: '#D4FF00',
+        highlight: '#6366F1',
+        subtext: '#94A3B8',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
         display: ['Space Grotesk', 'Inter', 'system-ui', 'sans-serif'],
       },
       boxShadow: {
-        'neon-blue': '0 0 20px rgba(0, 229, 255, 0.35), 0 0 60px rgba(0, 229, 255, 0.15)',
-        'neon-purple': '0 0 20px rgba(138, 43, 226, 0.35), 0 0 60px rgba(138, 43, 226, 0.15)',
-        'neon-sm': '0 0 10px rgba(0, 229, 255, 0.25)',
+        'neon-blue': '0 0 20px rgba(212, 255, 0, 0.35), 0 0 60px rgba(212, 255, 0, 0.15)',
+        'neon-purple': '0 0 20px rgba(99, 102, 241, 0.35), 0 0 60px rgba(99, 102, 241, 0.15)',
+        'neon-sm': '0 0 10px rgba(212, 255, 0, 0.25)',
         glass: '0 10px 40px rgba(0, 0, 0, 0.5)',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'hero-gradient':
-          'radial-gradient(circle at 20% 20%, rgba(0,229,255,0.08), transparent 40%), radial-gradient(circle at 80% 10%, rgba(138,43,226,0.08), transparent 35%), linear-gradient(180deg, #050505 0%, #0D0D0D 100%)',
-        'accent-gradient': 'linear-gradient(135deg, #00E5FF, #8A2BE2)',
+          'radial-gradient(circle at 20% 20%, rgba(212,255,0,0.08), transparent 40%), radial-gradient(circle at 80% 10%, rgba(99,102,241,0.08), transparent 35%), linear-gradient(180deg, #08090C 0%, #0F1117 100%)',
+        'accent-gradient': 'linear-gradient(135deg, #D4FF00, #6366F1)',
       },
       animation: {
         'float': 'float 6s ease-in-out infinite',

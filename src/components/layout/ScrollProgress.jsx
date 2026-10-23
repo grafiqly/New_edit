@@ -11,6 +11,7 @@ const sections = [
   { id: 'testimonials', label: 'Reviews' },
   { id: 'team', label: 'Team' },
   { id: 'why-us', label: 'Why Us' },
+  { id: 'pricing', label: 'Packages' },
   { id: 'contact', label: 'Contact' },
 ]
 
@@ -73,8 +74,8 @@ export function ScrollProgress() {
         className="fixed top-0 left-0 right-0 h-[2px] z-[60] origin-left"
         style={{
           scaleX: smoothProgress,
-          background: 'linear-gradient(90deg, #00E5FF, #8A2BE2)',
-          boxShadow: '0 0 10px rgba(0, 229, 255, 0.4)',
+          background: 'linear-gradient(90deg, #D4FF00, #6366F1)',
+          boxShadow: '0 0 10px rgba(212, 255, 0, 0.4)',
         }}
       />
 

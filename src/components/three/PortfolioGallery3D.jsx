@@ -76,8 +76,8 @@ const framePositions = [
 ]
 
 const frameColors = [
-  '#00E5FF',
-  '#8A2BE2',
+  '#D4FF00',
+  '#6366F1',
   '#FF6B35',
   '#E91E8C',
   '#10B981',
@@ -115,7 +115,7 @@ export function PortfolioGallery3D({ projects = [], onSelect }) {
         <mesh position={[0, 0, -2]}>
           <icosahedronGeometry args={[0.5, 1]} />
           <MeshDistortMaterial
-            color="#00E5FF"
+            color="#D4FF00"
             speed={1.5}
             distort={0.3}
             roughness={0.2}

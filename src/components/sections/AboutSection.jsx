@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect } from 'react'
 import { motion, useInView } from 'framer-motion'
 import { SectionHeading } from '../ui/SectionHeading'
 import { SvgOrbitFrame } from '../ui/SvgOrbitFrame'
@@ -20,40 +20,38 @@ const fadeInUp = {
 }
 
 function AnimatedCounter({ value, suffix, decimals = 0, isInView }) {
-  const [count, setCount] = useState(0)
+  const spanRef = useRef(null)
   const hasAnimated = useRef(false)
 
   useEffect(() => {
-    if (!isInView || hasAnimated.current) return
+    if (!isInView || hasAnimated.current || !spanRef.current) return
     hasAnimated.current = true
 
     const duration = 2000
-    const steps = 60
-    const stepTime = duration / steps
-    let current = 0
+    const startTime = performance.now()
 
-    const timer = setInterval(() => {
-      current += 1
-      const progress = current / steps
+    function step(now) {
+      const elapsed = now - startTime
+      const progress = Math.min(elapsed / duration, 1)
       // ease-out cubic
       const eased = 1 - Math.pow(1 - progress, 3)
-      setCount(eased * value)
+      const current = eased * value
+      const display = decimals > 0 ? current.toFixed(decimals) : Math.round(current)
+      if (spanRef.current) spanRef.current.textContent = `${display}${suffix}`
+      if (progress < 1) requestAnimationFrame(step)
+    }
 
-      if (current >= steps) {
-        setCount(value)
-        clearInterval(timer)
-      }
-    }, stepTime)
+    requestAnimationFrame(step)
+  }, [isInView, value, suffix, decimals])
 
-    return () => clearInterval(timer)
-  }, [isInView, value])
-
-  const displayValue = decimals > 0 ? count.toFixed(decimals) : Math.round(count)
+  const initial = decimals > 0 ? (0).toFixed(decimals) : '0'
 
   return (
-    <span className="font-display text-2xl sm:text-3xl xl:text-4xl font-bold leading-none gradient-text">
-      {displayValue}
-      {suffix}
+    <span
+      ref={spanRef}
+      className="font-display text-2xl sm:text-3xl xl:text-4xl font-bold leading-none gradient-text tabular-nums tracking-tight"
+    >
+      {initial}{suffix}
     </span>
   )
 }
@@ -64,9 +62,15 @@ export function AboutSection() {
 
   return (
     <section id="about" className="section-padding relative overflow-hidden">
-      {/* Background accents */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/3 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-highlight/3 rounded-full blur-[120px] pointer-events-none" />
+      {/* Background accents — radial gradients instead of blur() for zero compositor cost */}
+      <div
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.03]"
+        style={{ background: 'radial-gradient(circle, #D4FF00, transparent 55%)' }}
+      />
+      <div
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-[0.03]"
+        style={{ background: 'radial-gradient(circle, #6366F1, transparent 55%)' }}
+      />
 
       <div className="section-container">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -88,7 +92,7 @@ export function AboutSection() {
             </motion.div>
 
             <motion.p
-              className="text-subtext text-lg leading-relaxed max-w-lg"
+              className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-lg [text-wrap:pretty]"
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
@@ -101,7 +105,7 @@ export function AboutSection() {
             </motion.p>
 
             <motion.p
-              className="text-subtext leading-relaxed max-w-lg"
+              className="text-slate-400 text-sm sm:text-base leading-relaxed max-w-lg [text-wrap:pretty]"
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
@@ -115,7 +119,7 @@ export function AboutSection() {
 
             {/* Key statement */}
             <motion.h3
-              className="font-display text-2xl md:text-3xl font-bold gradient-text leading-tight pt-2"
+              className="font-display text-2xl md:text-3xl font-bold gradient-text leading-tight pt-2 [text-wrap:balance]"
               variants={fadeInUp}
               initial="hidden"
               whileInView="visible"
@@ -140,7 +144,7 @@ export function AboutSection() {
               {stats.map((stat) => (
                 <div
                   key={stat.label}
-                  className="glass-card group min-w-0 rounded-xl px-2 py-4 text-center sm:p-4"
+                  className="glass-card group min-w-0 rounded-2xl px-2.5 py-4 text-center sm:p-5"
                 >
                   <AnimatedCounter
                     value={stat.value}
@@ -148,7 +152,7 @@ export function AboutSection() {
                     decimals={stat.decimals || 0}
                     isInView={isStatsInView}
                   />
-                  <p className="mt-2 text-[10px] uppercase leading-tight tracking-[0.08em] text-subtext sm:text-xs">
+                  <p className="mt-2 text-[10px] uppercase leading-tight tracking-[0.1em] text-slate-400 font-medium sm:text-xs">
                     {stat.label}
                   </p>
                 </div>

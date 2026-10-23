@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { GlowButton } from '../ui/GlowButton'
@@ -10,16 +10,35 @@ const navLinks = [
   { label: 'Portfolio', href: '#portfolio' },
   { label: 'Results', href: '#results' },
   { label: 'Team', href: '#team' },
+  { label: 'Packages', href: '#pricing' },
   { label: 'Contact', href: '#contact' },
 ]
 
 export function Navbar() {
-  const [isScrolled, setIsScrolled] = useState(false)
+  const navRef = useRef(null)
   const [isMobileOpen, setIsMobileOpen] = useState(false)
 
   useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 50)
+    let ticking = false
+    const handleScroll = () => {
+      if (ticking) return
+      ticking = true
+      requestAnimationFrame(() => {
+        const nav = navRef.current
+        if (nav) {
+          if (window.scrollY > 50) {
+            nav.classList.add('glass-strong', 'shadow-lg')
+            nav.classList.remove('bg-transparent')
+          } else {
+            nav.classList.remove('glass-strong', 'shadow-lg')
+            nav.classList.add('bg-transparent')
+          }
+        }
+        ticking = false
+      })
+    }
     window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
@@ -35,14 +54,11 @@ export function Navbar() {
   return (
     <>
       <motion.nav
+        ref={navRef}
         initial={{ y: -80 }}
         animate={{ y: 0 }}
         transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? 'glass-strong shadow-lg'
-            : 'bg-transparent'
-        }`}
+        className="fixed top-0 left-0 right-0 z-50 transition-all duration-500 bg-transparent"
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16 md:h-20">

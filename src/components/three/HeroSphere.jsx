@@ -49,7 +49,7 @@ function GlowingSphere() {
       <Float speed={1.8} rotationIntensity={1.2} floatIntensity={2.5}>
         <Sphere args={[1.4, 64, 64]} position={[0, 0, 0]}>
           <MeshDistortMaterial
-            color="#00E5FF"
+            color="#D4FF00"
             speed={2.5}
             distort={0.3}
             roughness={0.15}
@@ -68,8 +68,8 @@ function GlowingSphere() {
           position={[0, 0, 0]}
         >
           <meshStandardMaterial
-            color="#8A2BE2"
-            emissive="#00E5FF"
+            color="#6366F1"
+            emissive="#D4FF00"
             emissiveIntensity={0.6}
             transparent
             opacity={0.7}
@@ -85,8 +85,8 @@ function GlowingSphere() {
           position={[0, 0, 0]}
         >
           <meshStandardMaterial
-            color="#00E5FF"
-            emissive="#8A2BE2"
+            color="#D4FF00"
+            emissive="#6366F1"
             emissiveIntensity={0.4}
             transparent
             opacity={0.5}
@@ -104,8 +104,8 @@ function GlowingSphere() {
         >
           <Sphere args={[p.size, 8, 8]} position={p.position}>
             <meshStandardMaterial
-              color={i % 2 === 0 ? '#00E5FF' : '#8A2BE2'}
-              emissive={i % 2 === 0 ? '#00E5FF' : '#8A2BE2'}
+              color={i % 2 === 0 ? '#D4FF00' : '#6366F1'}
+              emissive={i % 2 === 0 ? '#D4FF00' : '#6366F1'}
               emissiveIntensity={2}
             />
           </Sphere>

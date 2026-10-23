@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { ArrowUpRight } from 'lucide-react'
 import { Github, Twitter, Linkedin, Instagram } from '../ui/SocialIcons'
 
@@ -14,6 +15,7 @@ const footerLinks = {
     { label: 'Process', href: '#process' },
     { label: 'Portfolio', href: '#portfolio' },
     { label: 'Team', href: '#team' },
+    { label: 'Packages & Pricing', href: '#pricing' },
     { label: 'Contact', href: '#contact' },
   ],
 }
@@ -26,10 +28,32 @@ const socialLinks = [
 ]
 
 export function Footer() {
+  const videoRef = useRef(null)
+
+  useEffect(() => {
+    const video = videoRef.current
+    if (!video) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          video.play().catch(() => {})
+        } else {
+          video.pause()
+        }
+      },
+      { threshold: 0.05 }
+    )
+
+    observer.observe(video)
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <footer className="relative border-t border-white/5 overflow-hidden">
       {/* Video Background */}
       <video
+        ref={videoRef}
         autoPlay
         muted
         loop
@@ -39,7 +63,7 @@ export function Footer() {
       />
 
       {/* Dark overlay to keep content readable */}
-      <div className="absolute inset-0 bg-black/35 z-[1]" />
+      <div className="absolute inset-0 bg-black/40 z-[1]" />
 
       {/* Grid overlay */}
       <div className="absolute inset-0 grid-bg opacity-20 pointer-events-none z-[2]" />

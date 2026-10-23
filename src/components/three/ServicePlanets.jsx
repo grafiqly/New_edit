@@ -3,13 +3,13 @@ import { useFrame } from '@react-three/fiber'
 import { Float, Sphere, MeshDistortMaterial } from '@react-three/drei'
 
 const planetPositions = [
-  { pos: [0, 0, 0], size: 0.6, color: '#00E5FF' },
-  { pos: [2.5, 1, -1], size: 0.4, color: '#8A2BE2' },
-  { pos: [-2.2, -0.8, 0.5], size: 0.45, color: '#00E5FF' },
-  { pos: [1.5, -1.5, 1], size: 0.35, color: '#8A2BE2' },
-  { pos: [-1.8, 1.2, -0.8], size: 0.38, color: '#00E5FF' },
-  { pos: [0.5, 2, 0.5], size: 0.32, color: '#8A2BE2' },
-  { pos: [-0.8, -2, -0.5], size: 0.42, color: '#00E5FF' },
+  { pos: [0, 0, 0], size: 0.6, color: '#D4FF00' },
+  { pos: [2.5, 1, -1], size: 0.4, color: '#6366F1' },
+  { pos: [-2.2, -0.8, 0.5], size: 0.45, color: '#D4FF00' },
+  { pos: [1.5, -1.5, 1], size: 0.35, color: '#6366F1' },
+  { pos: [-1.8, 1.2, -0.8], size: 0.38, color: '#D4FF00' },
+  { pos: [0.5, 2, 0.5], size: 0.32, color: '#6366F1' },
+  { pos: [-0.8, -2, -0.5], size: 0.42, color: '#D4FF00' },
 ]
 
 function Planet({ position, size, color, index, onSelect }) {

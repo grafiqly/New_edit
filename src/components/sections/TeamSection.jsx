@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react'
+import { useState, useRef, useCallback } from 'react'
 import { motion } from 'framer-motion'
 import { Twitter, Linkedin, Github } from '../ui/SocialIcons'
 import { SectionHeading } from '../ui/SectionHeading'
@@ -7,7 +7,7 @@ const team = [
   {
     name: 'Alex Chen',
     role: 'Creative Director',
-    color: '#00E5FF',
+    color: '#D4FF00',
     initials: 'AC',
     bio: 'Award-winning creative with 12+ years crafting brand identities.',
     socials: { twitter: '#', linkedin: '#', github: '#' },
@@ -15,7 +15,7 @@ const team = [
   {
     name: 'Maya Patel',
     role: 'Strategy Lead',
-    color: '#8A2BE2',
+    color: '#6366F1',
     initials: 'MP',
     bio: 'Data strategist turning insights into high-impact growth playbooks.',
     socials: { twitter: '#', linkedin: '#', github: '#' },
@@ -23,7 +23,7 @@ const team = [
   {
     name: 'Jordan Kim',
     role: 'Tech Architect',
-    color: '#00E5FF',
+    color: '#D4FF00',
     initials: 'JK',
     bio: 'Full-stack engineer obsessed with performance and scalable systems.',
     socials: { twitter: '#', linkedin: '#', github: '#' },
@@ -31,7 +31,7 @@ const team = [
   {
     name: 'Priya Sharma',
     role: 'Growth Manager',
-    color: '#8A2BE2',
+    color: '#6366F1',
     initials: 'PS',
     bio: 'Growth hacker who scaled startups from zero to millions in reach.',
     socials: { twitter: '#', linkedin: '#', github: '#' },
@@ -40,21 +40,22 @@ const team = [
 
 function TeamCard({ member, index }) {
   const [hover, setHover] = useState(false)
-  const [tilt, setTilt] = useState({ x: 0, y: 0 })
   const cardRef = useRef(null)
 
-  const handleMouseMove = (e) => {
-    if (!cardRef.current) return
-    const rect = cardRef.current.getBoundingClientRect()
-    const x = (e.clientX - rect.left) / rect.width - 0.5
-    const y = (e.clientY - rect.top) / rect.height - 0.5
-    setTilt({ x: y * -8, y: x * 8 })
-  }
+  const handleMouseMove = useCallback((e) => {
+    const el = cardRef.current
+    if (!el) return
+    const rect = el.getBoundingClientRect()
+    const x = (e.clientY - rect.top) / rect.height - 0.5
+    const y = (e.clientX - rect.left) / rect.width - 0.5
+    el.style.transform = `perspective(800px) rotateX(${x * -8}deg) rotateY(${y * 8}deg)`
+  }, [])
 
-  const handleMouseLeave = () => {
+  const handleMouseLeave = useCallback(() => {
     setHover(false)
-    setTilt({ x: 0, y: 0 })
-  }
+    const el = cardRef.current
+    if (el) el.style.transform = 'perspective(800px) rotateX(0deg) rotateY(0deg)'
+  }, [])
 
   return (
     <motion.div
@@ -68,8 +69,8 @@ function TeamCard({ member, index }) {
       onMouseLeave={handleMouseLeave}
       className="glass-card rounded-2xl p-6 text-center relative overflow-hidden group"
       style={{
-        transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: 'transform 0.2s ease-out',
+        willChange: 'transform',
+        transition: 'transform 0.15s ease-out, box-shadow 0.3s ease',
         boxShadow: hover
           ? `0 0 0 1px ${member.color}40, 0 0 30px ${member.color}15`
           : undefined,

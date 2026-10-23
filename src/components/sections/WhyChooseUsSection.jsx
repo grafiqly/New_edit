@@ -44,7 +44,7 @@ function ComparisonBar({ metric, index, isInView }) {
       <div className="hidden md:grid md:grid-cols-2 md:gap-4">
         {/* Traditional bar (grows right-to-left) */}
         <div className="flex items-center gap-3">
-          <span className="w-10 text-right text-xs text-subtext">{metric.traditional}%</span>
+          <span className="w-10 text-right text-xs text-subtext tabular-nums">{metric.traditional}%</span>
           <div className="relative h-3 flex-1 overflow-hidden rounded-full bg-white/5">
             <motion.div
               className="absolute right-0 h-full rounded-full bg-white/10"
@@ -65,8 +65,8 @@ function ComparisonBar({ metric, index, isInView }) {
             <motion.div
               className="h-full rounded-full"
               style={{
-                background: 'linear-gradient(90deg, #00E5FF, #8A2BE2)',
-                boxShadow: '0 0 16px rgba(0, 229, 255, 0.3)',
+                background: 'linear-gradient(90deg, #D4FF00, #6366F1)',
+                boxShadow: '0 0 16px rgba(212, 255, 0, 0.3)',
               }}
               initial={{ width: 0 }}
               animate={isInView ? { width: `${metric.grafiqly}%` } : { width: 0 }}
@@ -77,7 +77,7 @@ function ComparisonBar({ metric, index, isInView }) {
               }}
             />
           </div>
-          <span className="w-10 text-xs font-semibold text-accent">{metric.grafiqly}%</span>
+          <span className="w-10 text-xs font-semibold text-accent tabular-nums">{metric.grafiqly}%</span>
         </div>
       </div>
 
@@ -87,7 +87,7 @@ function ComparisonBar({ metric, index, isInView }) {
         <div>
           <div className="mb-1 flex items-center justify-between">
             <span className="text-xs text-subtext">Traditional</span>
-            <span className="text-xs text-subtext">{metric.traditional}%</span>
+            <span className="text-xs text-subtext tabular-nums">{metric.traditional}%</span>
           </div>
           <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/5">
             <motion.div
@@ -107,14 +107,14 @@ function ComparisonBar({ metric, index, isInView }) {
         <div>
           <div className="mb-1 flex items-center justify-between">
             <span className="text-xs font-medium text-accent">Grafiqly</span>
-            <span className="text-xs font-semibold text-accent">{metric.grafiqly}%</span>
+            <span className="text-xs font-semibold text-accent tabular-nums">{metric.grafiqly}%</span>
           </div>
           <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/5">
             <motion.div
               className="h-full rounded-full"
               style={{
-                background: 'linear-gradient(90deg, #00E5FF, #8A2BE2)',
-                boxShadow: '0 0 16px rgba(0, 229, 255, 0.3)',
+                background: 'linear-gradient(90deg, #D4FF00, #6366F1)',
+                boxShadow: '0 0 16px rgba(212, 255, 0, 0.3)',
               }}
               initial={{ width: 0 }}
               animate={isInView ? { width: `${metric.grafiqly}%` } : { width: 0 }}
