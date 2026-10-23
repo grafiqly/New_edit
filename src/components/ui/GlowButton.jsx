@@ -10,9 +10,9 @@ export function GlowButton({ children, variant = 'primary', size = 'md', classNa
   }
 
   const variantClasses = {
-    primary: 'bg-accent text-primary font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_0_20px_rgba(0,229,255,0.25)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_0_30px_rgba(0,229,255,0.45)] hover:bg-[#1cf0ff]',
-    secondary: 'bg-highlight text-white font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.3),0_0_20px_rgba(138,43,226,0.25)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_30px_rgba(138,43,226,0.45)]',
-    outline: 'bg-accent/5 text-accent border border-accent/35 hover:border-accent hover:bg-accent/15 hover:shadow-[0_0_24px_rgba(0,229,255,0.2)]',
+    primary: 'bg-accent text-primary font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_0_20px_rgba(0,240,255,0.35)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_0_30px_rgba(0,240,255,0.55)] hover:bg-[#38bdf8]',
+    secondary: 'bg-highlight text-primary font-bold shadow-[inset_0_1px_0_rgba(255,255,255,0.35),0_0_20px_rgba(56,189,248,0.35)] hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.5),0_0_30px_rgba(56,189,248,0.5)] hover:bg-[#7dd3fc]',
+    outline: 'bg-accent/10 text-accent border border-accent/40 hover:border-accent hover:bg-accent/20 hover:shadow-[0_0_24px_rgba(0,240,255,0.25)]',
     ghost: 'bg-white/5 text-slate-200 border border-white/10 hover:border-white/25 hover:bg-white/10 hover:text-white',
   }
 

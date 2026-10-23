@@ -64,12 +64,12 @@ export function AboutSection() {
     <section id="about" className="section-padding relative overflow-hidden">
       {/* Background accents — radial gradients instead of blur() for zero compositor cost */}
       <div
-        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.03]"
-        style={{ background: 'radial-gradient(circle, #D4FF00, transparent 55%)' }}
+        className="absolute top-0 right-0 w-[600px] h-[600px] rounded-full pointer-events-none opacity-[0.04]"
+        style={{ background: 'radial-gradient(circle, #00F0FF, transparent 55%)' }}
       />
       <div
-        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-[0.03]"
-        style={{ background: 'radial-gradient(circle, #6366F1, transparent 55%)' }}
+        className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full pointer-events-none opacity-[0.04]"
+        style={{ background: 'radial-gradient(circle, #38BDF8, transparent 55%)' }}
       />
 
       <div className="section-container">

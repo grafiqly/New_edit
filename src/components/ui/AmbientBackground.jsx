@@ -6,21 +6,21 @@ export function AmbientBackground() {
 
       {/* Static ambient gradient orbs — no animation, no blur filter */}
       <div
-        className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-[0.04]"
+        className="absolute top-[15%] left-[10%] w-[500px] h-[500px] rounded-full opacity-[0.05]"
         style={{
-          background: 'radial-gradient(circle, #D4FF00, transparent 70%)',
+          background: 'radial-gradient(circle, #00F0FF, transparent 70%)',
         }}
       />
       <div
-        className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] rounded-full opacity-[0.03]"
+        className="absolute bottom-[10%] right-[10%] w-[600px] h-[600px] rounded-full opacity-[0.04]"
         style={{
-          background: 'radial-gradient(circle, #6366F1, transparent 70%)',
+          background: 'radial-gradient(circle, #38BDF8, transparent 70%)',
         }}
       />
       <div
-        className="absolute top-[60%] left-[50%] w-[400px] h-[400px] rounded-full opacity-[0.02]"
+        className="absolute top-[60%] left-[50%] w-[400px] h-[400px] rounded-full opacity-[0.03]"
         style={{
-          background: 'radial-gradient(circle, #D4FF00, transparent 70%)',
+          background: 'radial-gradient(circle, #00F0FF, transparent 70%)',
         }}
       />
     </div>

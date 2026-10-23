@@ -81,7 +81,7 @@ export function HeroSection() {
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          video.play().catch(() => {})
+          video.play().catch(() => { })
         } else {
           video.pause()
         }
@@ -113,7 +113,7 @@ export function HeroSection() {
           className="absolute inset-0 w-full h-full object-cover"
           style={{ willChange: 'transform', transform: 'translateZ(0)' }}
         >
-          <source src="/hero_g.mp4" type="video/mp4" />
+          <source src="/hero.mp4" type="video/mp4" />
         </video>
         {/* Dark overlay instead of CSS filter — zero per-frame GPU cost */}
         <div className="absolute inset-0 bg-black/20 pointer-events-none" />
@@ -144,7 +144,7 @@ export function HeroSection() {
       >
         {/* Eyebrow */}
         <motion.div
-          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/25 bg-accent/5 backdrop-blur-md mb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_20px_rgba(0,229,255,0.1)]"
+          className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-accent/25 bg-accent/5 backdrop-blur-md mb-8 shadow-[inset_0_1px_0_rgba(255,255,255,0.08),0_0_20px_rgba(0,240,255,0.18)]"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8 }}
@@ -196,13 +196,13 @@ export function HeroSection() {
         >
           <a
             href="#contact"
-            className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent text-primary font-bold text-sm tracking-wider uppercase rounded-xl overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_0_24px_rgba(0,229,255,0.25)] transition-[transform,box-shadow,background-color] duration-200 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_0_36px_rgba(0,229,255,0.45)] hover:bg-[#1cf0ff] active:scale-[0.97] min-h-[46px]"
+            className="group relative inline-flex items-center justify-center gap-2 px-8 py-3.5 bg-accent text-primary font-bold text-sm tracking-wider uppercase rounded-xl overflow-hidden shadow-[inset_0_1px_0_rgba(255,255,255,0.4),0_0_24px_rgba(0,240,255,0.35)] transition-[transform,box-shadow,background-color] duration-200 hover:shadow-[inset_0_1px_0_rgba(255,255,255,0.6),0_0_36px_rgba(0,240,255,0.55)] hover:bg-[#38bdf8] active:scale-[0.97] min-h-[46px]"
           >
             <span className="relative z-10">Start Your Project</span>
           </a>
           <a
             href="#portfolio"
-            className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/15 bg-white/[0.04] text-white font-semibold text-sm tracking-wider uppercase rounded-xl transition-[transform,border-color,background-color,box-shadow] duration-200 hover:border-accent/50 hover:bg-white/[0.08] hover:shadow-[0_0_24px_rgba(0,229,255,0.15)] active:scale-[0.97] min-h-[46px]"
+            className="group inline-flex items-center justify-center gap-2 px-8 py-3.5 border border-white/15 bg-white/[0.04] text-white font-semibold text-sm tracking-wider uppercase rounded-xl transition-[transform,border-color,background-color,box-shadow] duration-200 hover:border-accent/50 hover:bg-white/[0.08] hover:shadow-[0_0_24px_rgba(0,240,255,0.2)] active:scale-[0.97] min-h-[46px]"
           >
             <span>Explore Our Work</span>
             <span className="inline-block transition-transform duration-200 group-hover:translate-x-1 text-accent">
